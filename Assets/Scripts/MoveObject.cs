@@ -7,13 +7,13 @@ public class MoveObject : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] Vector3 moveDirection;
 
-    float totalMoveDistance;
+    [SerializeField] float totalMoveDistance;
     Vector3 startingLocation;   
 
     // Start is called before the first frame update
     void Start()
     {
-        totalMoveDistance = 10f;
+        //totalMoveDistance = 10f;
         startingLocation = gameObject.transform.position;
     }
 
@@ -27,12 +27,13 @@ public class MoveObject : MonoBehaviour
             FlipMoveDirection();
         }
 
-        //gameObject.transform.Translate(moveDirection * moveSpeed);
+        gameObject.transform.Translate(moveDirection * moveSpeed);
     }
 
     void FlipMoveDirection()
     {
         moveDirection = -moveDirection;
+        enabled = false;
     }
 
     float GetDistanceTraveled()
